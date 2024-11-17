@@ -2,6 +2,7 @@ import "./App.css";
 import Card from "./Card";
 import personsData from "./personsData";
 import { useState } from "react";
+import Button from "./components/Button";
 
 //Examples
 
@@ -29,12 +30,21 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const clickHandler = () => {
-    setIsLoggedIn(!isLoggedIn);
+    setIsLoggedIn((prev) => !prev); // can be use : prev or prevSate  -> previous state
   };
+
+  const handleClick = (id) => {
+    console.log("I was Clicked", id);
+  };
+
   return (
     <>
       <header>
         <h1>Person Data</h1>
+        <Button
+          text={isLoggedIn ? "Log Out" : "Log In"}
+          click={clickHandler} // click is props atrributes so in Button.jsx it is used as a event handling
+        />
       </header>
       <main>
         {isLoggedIn ? (
@@ -48,14 +58,13 @@ function App() {
                 title={person.title}
                 age={person.age}
                 animal={person.animal}
+                click={() => handleClick(person.id)} // passing click event handling through Card components
               />
-              <button onClick={clickHandler}>Log Out</button>
             </div>
           ))
         ) : (
           <div>
             <p>Please Log in to see the list</p>
-            <button onClick={clickHandler}>Log In</button>
           </div>
         )}
       </main>
