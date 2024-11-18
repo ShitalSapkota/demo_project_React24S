@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "./components/Button";
+import Button from "./Button";
 
 function Card({ firstname, lastname, title, age, animal, click }) {
   const [isEdit, setEdit] = useState(false);
