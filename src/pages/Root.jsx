@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 
 const Root = () => {
@@ -5,6 +6,7 @@ const Root = () => {
     <div>
       <h2>Home Page</h2>
       <Header />
+      <Outlet />
     </div>
   );
 };
